@@ -4,7 +4,11 @@ export default async function handler(req, res) {
     if (req.method !== 'POST') {
         return res.status(405).json({ message: 'Método não permitido' });
     }
- 
+       await fetch('/api/cadastrar', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ nome, empresa, email, telefone, servico, mensagem })
+});
 
     const { nome, empresa, email, telefone, servico, mensagem } = req.body;
 
